@@ -162,9 +162,9 @@ Coordinates are cluster centers of mass in Talairach RAS. Boldface in Table 2 ma
 2. Paste Run 1 into `APT_AdatpiveRun3_Macro.xlsx` → **Check This Tab!** → select Normal / OverSample High / OverSample Low.
 3. Scanner **Run 3** using that version.
 4. Paste all three runs into the matching **Data Extraction Macros** workbook.
-5. Export AFNI timing files and behavioural demand indices.
+5. Export AFNI timing files and behavioural summary.
 6. Run AFNI proc.py to process data.
-7. Implement quality control.
+7. Implement quality control and exclude participants as needed.
 8. Use AFNI's 3dROIStats to extract signal from a priori ROIs.
 9. Exploratory: Use AFNI's 3dtcorr to correlate brain activity with behavioural indices.
 
