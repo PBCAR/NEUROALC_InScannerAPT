@@ -1,6 +1,6 @@
 # NEURO ALC In-Scanner Alcohol Purchase Task
 
-Materials for the **NEURO ALC** fMRI Alcohol Purchase Task (APT): E-Prime experiments, data-extraction workbooks, and ROI documentation.
+Materials for the **NEURO ALC** fMRI Alcohol Purchase Task (APT): E-Prime experiments, data-extraction workbooks, and ROI documentation; AFNI scripts.
 
 The task is an in-scanner hypothetical alcohol demand paradigm from the R01 neuroeconomics AUD + stress project (MacKillop, Sweet). The two-epoch APT described in MacKillop et al. (2014).
 
