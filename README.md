@@ -64,15 +64,14 @@ Run 3 is **adaptive**, chosen from Run 1 performance so that later trials oversa
 
 | Run 3 version | Price mix (30 trials) | When to use |
 | --- | --- | --- |
-| **Normal** | 10 low / 10 medium / 10 high | Default / balanced Run 1 choices |
-| **OverSample High** | 7 low / 7 medium / 16 high | Participant still “approaching” (buying) at many prices; need more suppressed-range trials |
-| **OverSample Low** | 16 low / 8 medium / 6 high | Participant already “avoiding” (0 drinks) at many prices; need more inelastic-range trials |
+| **Normal** | 10 low / 10 medium / 10 high | Default / Balanced Run 1 choices |
+| **OverSample High** | 7 low / 7 medium / 16 high | Participant is still purchasing at high prices and not hitting breakpoint; need more suppressed trials |
+| **OverSample Low** | 16 low / 8 medium / 6 high | Participant is not consuming at enough prices; need more inelastic-range trials where participant is consuming their max amount |
 
-The OverSample Low list omits $40 and $80 (16 unique prices instead of 18).
 
 **How to pick Run 3:** after Run 1, paste the E-Prime output into `E-Prime Task Files/APT_AdatpiveRun3_Macro.xlsx` and open **Check This Tab!**. Each trial is coded:
 
-- **Approach** — drink count at or near the maximum (10)
+- **Approach** — drink count at the maximum (10)
 - **Ambivalent** — intermediate counts
 - **Avoid** — 0 drinks
 
