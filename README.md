@@ -2,15 +2,13 @@
 
 Materials for the **NEURO ALC** fMRI Alcohol Purchase Task (APT): E-Prime experiments, data-extraction workbooks, and ROI documentation.
 
-The task is an in-scanner hypothetical alcohol demand paradigm from the R01 neuroeconomics AUD + stress project (MacKillop, Sweet). The E-Prime scripts were written by M. Amlung (updated 14 December 2018) and follow the two-epoch APT described in MacKillop et al. (2014).
-
-This repository is for internal study use. It is not a public web app.
+The task is an in-scanner hypothetical alcohol demand paradigm from the R01 neuroeconomics AUD + stress project (MacKillop, Sweet). The two-epoch APT described in MacKillop et al. (2014).
 
 ---
 
 ## Task overview
 
-On each trial the participant reports **how many drinks they would consume** at a stated price, using a 0–10 drink number line.
+On each trial the participant reports **how many drinks they would consume** at a stated price, using a 0–10 drink number line. The task is displayed in the MRI and the participant enters their response using a button box.
 
 ![fMRI Alcohol Purchase Task paradigm](docs/apt_paradigm.png)
 
@@ -46,7 +44,7 @@ Reaction time is the length of the Choose epoch.
 
 ## Prices and demand-curve bins
 
-There are **18 prices** from **$0 to $80 / drink**, grouped a priori into three bins so that trials sample the inelastic, elastic, and suppressed portions of the demand curve:
+There are **18 prices** from **$0 to $80 / drink**, grouped into three bins so that trials sample the inelastic, elastic, and suppressed portions of the demand curve:
 
 | Bin | Demand-curve phase | Prices |
 | --- | --- | --- |
@@ -78,7 +76,7 @@ The OverSample Low list omits $40 and $80 (16 unique prices instead of 18).
 - **Ambivalent** — intermediate counts
 - **Avoid** — 0 drinks
 
-The sheet counts those categories and recommends Normal, Oversample High, or Oversample Low (`***If NA = Use Normal`).
+The sheet counts those categories and recommends Normal, Oversample High, or Oversample Low.
 
 ---
 
@@ -93,7 +91,7 @@ NEUROALC_GitHub/
 ├── NEURO ALC - Empirical ROI Results (3dtcorr).docx
 ├── E-Prime Task Files/          ← organized scanner experiments + Run 3 picker
 ├── Data Extraction Macros/      ← one workbook per Run 3 type
-└── R01_NE_APT ...               ← original E-Prime 2/3 copies, including lab versions
+
 ```
 
 ### E-Prime task files
@@ -115,12 +113,7 @@ File types:
 | `.es3` / `.ebs3` | E-Prime 3 source / compiled |
 | `.wndpos` | Window-position sidecar; not needed to run the task |
 
-Lab / practice copies at the repo root:
 
-- `R01_NE_APT LAB VERSION_Run 1_Penultimate Prices EP3`
-- `R01_NE_APT LAB VERSION_Run 1_Penultimate Prices EP3_April 11_WaterBottle`
-
-Session flow in the scripts: **Trigger → Instructions (6 s) → `aptTrials`**. Each trial procedure is `decideNew` → `init` → `inputresponse` / `adjustScale` loop → `submitted` → `ISI`.
 
 ### Data extraction macros
 
@@ -132,29 +125,29 @@ Pick the workbook that matches the Run 3 version that was administered:
 | `Data Extraction Macros/Oversample High Run 3/` | `XXXX APT Processed HIGH_LocalV1.xlsx` |
 | `Data Extraction Macros/Oversample Low Run 3/` | `XXXX APT Processed LOW_LocalV1.xlsx` |
 
-Replace `XXXX` with the participant ID. Use the workbook that matches Run 3; the Behavioural Information sheet flags a mismatch (`if this doesn't say NORMAL you have pasted the data into the wrong macro`).
-
 Typical workflow:
 
 1. Paste raw E-Prime text into **Paste Run 1 / 2 / 3**.
 2. Review cleaned trial tables on **Run 1 / 2 / 3**, demand plots on **Average Figure**, and combined indices on **Combined R1-R3**.
 3. Check **ChoiceCoding** (Approach / Ambivalent / Avoid, plus a second “Rule 2” coding).
-4. Export imaging timings from **AFNI STIM FILES** (afni_proc.py local-times format; empty conditions use `9999:9999`) and **CONN Files**.
+4. Export imaging timings from **AFNI STIM FILES** (afni_proc.py local-times format; empty conditions use `9999:9999`) and paste into participant files prior to running AFNI proc.py.
 5. Copy summary metrics from **Behavioural Information**.
 
-Demand indices produced by the macros include **intensity**, **Omax** (maximum expenditure), **breakpoint**, and related consistency / reversal checks.
+Indices produced by the macros include **intensity**, **Omax** (maximum expenditure), **breakpoint**, related consistency / reversal checks, and reaction time.
 
 Workbooks may contain leftover example participant data. Treat them as templates.
 
 ### Protocol and ROI documents
 
-| File | Contents |
-| --- | --- |
-| `NEURO ALC - In-Scanner Task Overview.docx` | Paradigm description and Figure 1 |
-| `NEURO ALC - A Priori ROIs.docx` | Table 1: a priori ROIs (Talairach RAS cluster centers of mass; 3.5 mm isotropic voxels; slices in radiological convention, Z = −14 to +62, 4 mm spacing) |
-| `NEURO ALC - Empirical ROI Results (3dtcorr).docx` | Table 2: whole-brain 3dTcorr clusters linking demand metrics to Choose-epoch activity |
+| File | Contents | Purpose |
+| --- | --- | --- |
+| `NEURO ALC - In-Scanner Task Overview.docx` | Paradigm description and Figure 1 | Provide a schematic of the in-scanner APT task.
+| `NEURO ALC - A Priori ROIs.docx` | Table 1: a priori ROIs (Talairach RAS cluster centers of mass; 3.5 mm isotropic voxels; slices in radiological convention, Z = −14 to +62, 4 mm spacing) - These ROIs were selected based on Amlung et al., 2024 and used in the primary NEURO ALC findings paper |
+| `NEURO ALC - Empirical ROI Results (3dtcorr).docx` | Table 2: whole-brain 3dTcorr clusters linking demand metrics to Choose-epoch activity | These are the empirical ROI results from the primary NEURO ALC findings paper (see below) |
 
-Empirical 3dTcorr maps were thresholded at **p < .01** and **cluster size > 15**. Correlations are with **Choose-epoch** activity in the matching demand-curve phase:
+### 3dtcorr Method
+
+AFNI's 3dTcorr was used to correlate behavioural demand metrics and brain activity during the related demand phase. Empirical 3dTcorr maps were thresholded at **p < .01** and **cluster size > 15**. Correlations are with **Choose-epoch** activity in the matching demand-curve phase:
 
 - **Intensity × inelastic** choice activity
 - **Elasticity × elastic** choice activity
@@ -164,14 +157,17 @@ Coordinates are cluster centers of mass in Talairach RAS. Boldface in Table 2 ma
 
 ---
 
-## Suggested scanner sequence
+## Suggested scanner and analysis sequence
 
-1. Run **lab version** (optional practice; water-bottle variant available).
-2. Scanner **Run 1**, then **Run 2**.
-3. Paste Run 1 into `APT_AdatpiveRun3_Macro.xlsx` → **Check This Tab!** → select Normal / OverSample High / OverSample Low.
-4. Scanner **Run 3** using that version.
-5. Paste all three runs into the matching **Data Extraction Macros** workbook.
-6. Export AFNI / CONN timing files and behavioural demand indices.
+1. Scanner **Run 1**, then **Run 2**.
+2. Paste Run 1 into `APT_AdatpiveRun3_Macro.xlsx` → **Check This Tab!** → select Normal / OverSample High / OverSample Low.
+3. Scanner **Run 3** using that version.
+4. Paste all three runs into the matching **Data Extraction Macros** workbook.
+5. Export AFNI timing files and behavioural demand indices.
+6. Run AFNI proc.py to process data.
+7. Implement quality control.
+8. Use AFNI's 3dROIStats to extract signal from a priori ROIs.
+9. Exploratory: Use AFNI's 3dtcorr to correlate brain activity with behavioural indices.
 
 ---
 
