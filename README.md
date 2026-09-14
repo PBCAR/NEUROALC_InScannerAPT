@@ -142,7 +142,7 @@ Workbooks may contain leftover example participant data. Treat them as templates
 | File | Contents | Purpose |
 | --- | --- | --- |
 | `NEURO ALC - In-Scanner Task Overview.docx` | Paradigm description and Figure 1 | Provide a schematic of the in-scanner APT task.
-| `NEURO ALC - A Priori ROIs.docx` | Table 1: a priori ROIs (Talairach RAS cluster centers of mass; 3.5 mm isotropic voxels; slices in radiological convention, Z = −14 to +62, 4 mm spacing) - These ROIs were selected based on Amlung et al., 2024 and used in the primary NEURO ALC findings paper |
+| `NEURO ALC - A Priori ROIs.docx` | Table 1: a priori ROIs (Talairach RAS cluster centers of mass; 3.5 mm isotropic voxels; slices in radiological convention, Z = −14 to +62, 4 mm spacing) | These ROIs were selected based on Amlung et al., 2024 and used in the primary NEURO ALC findings paper |
 | `NEURO ALC - Empirical ROI Results (3dtcorr).docx` | Table 2: whole-brain 3dTcorr clusters linking demand metrics to Choose-epoch activity | These are the empirical ROI results from the primary NEURO ALC findings paper (see below) |
 
 ### 3dtcorr Method
